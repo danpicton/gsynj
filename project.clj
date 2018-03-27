@@ -6,5 +6,10 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [proto-repl "0.3.1"]
                  [hawk "0.2.11"]]
-  :profiles   {:dev {:source-paths ["dev" "src" "test"]
-                     :dependencies [[org.clojure/tools.namespace "0.2.11"]]}})
+  :main  ^:skip-aot gsynj.core
+
+  :target-path "target/%s"
+
+  :profiles   {:uberjar {:aot :all}
+               :dev     {:source-paths ["dev" "src" "test"]
+                         :dependencies [[org.clojure/tools.namespace "0.2.11"]]}})
