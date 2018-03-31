@@ -1,9 +1,10 @@
 (ns gsynj.core
   (:require [clojure.java.shell :refer [sh]]
-            [hawk.core :as hawk])
+            [hawk.core :as hawk]
+            [clojure.repl :refer [doc source]])
   (:gen-class))
 
-(defn watch-kpdb []
+(defn watch-file []
   (hawk/watch! [{:paths ["/path/to/sync.me"]
                  :handler (fn [ctx e]
                             (println "event: " e)
@@ -12,6 +13,6 @@
                             (sh "notify-send" "sync.me synced")
                             ctx)}]))
 (defn -main [& args]
-  (watch-kpdb))
+  (watch-file))
 
-;(hawk/stop! watch-kpdb)
+;(hawk/stop! watch-file)
